@@ -1,0 +1,960 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Take Home Exercises}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Problem 1: Linear Regression
+Implementation}\label{problem-1-linear-regression-implementation}
+
+    Using only Python libraries included in a standard Python install
+(e.g.~not numpy, scipy, scikit-learn, etc.), write python function that
+implements a simple OLS regression. It should take an array-like object
+containing some number of observations of a single regressor and an
+array-like object containing the dependant variable values as inputs and
+return an array containing the slope and intercept as an output. In a
+Python shell (attach the output) or an IPython notebook, demonstrate
+your code's functionality and compare it to an existing OLS
+implementation.
+
+    \subsection{1.1 Solution to Problem 1}\label{solution-to-problem-1}
+
+In order to find the best fit of the linear equation:
+
+\textbf{Y = X * beta}
+
+Normal Equation is the quick way to calculate the parameters:
+
+\textbf{beta = (X'X)\^{}(-1) * X' * Y}
+
+where \textbf{beta'} = (intercept b0, slope b1, slope b2), and column
+vectors of \textbf{X} = (1, x1, x2, x3).
+
+Since there is no matrix inverse function in the standard Python
+install, I use \textbf{Gradient Descent} to find the optimal coef beta.
+
+The sample data here has only one feature. In principle we can apply the
+OLS algorithm to the regression problems with multiple features.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline 
+        
+        \PY{k+kn}{import} \PY{n+nn}{csv}
+        \PY{k+kn}{import} \PY{n+nn}{copy}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k+kn}{import} \PY{n}{pyplot} \PY{k}{as} \PY{n}{plt}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{loadCSV}\PY{p}{(}\PY{n}{filename}\PY{p}{)}\PY{p}{:} 
+            \PY{n}{dataset} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{filename}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{rb}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{csvfile}\PY{p}{:}
+                \PY{n}{reader} \PY{o}{=} \PY{n}{csv}\PY{o}{.}\PY{n}{reader}\PY{p}{(}\PY{n}{csvfile}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{quotechar}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{|}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+                \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{reader}\PY{p}{:}    
+                    \PY{n}{dataset}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{n+nb}{float}\PY{p}{,} \PY{n}{row}\PY{p}{)}\PY{p}{)}
+                
+            \PY{k}{return} \PY{n}{dataset}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{dot\PYZus{}product}\PY{p}{(}\PY{n}{vec1}\PY{p}{,} \PY{n}{vec2}\PY{p}{)}\PY{p}{:}
+            \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{vec1}\PY{p}{)} \PY{o}{==} \PY{n+nb}{len}\PY{p}{(}\PY{n}{vec2}\PY{p}{)}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{The size of two vectors does not match!}\PY{l+s}{\PYZsq{}}
+            
+            \PY{n}{prod} \PY{o}{=} \PY{l+m+mf}{0.0}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{xrange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{vec1}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{n}{prod} \PY{o}{+}\PY{o}{=} \PY{n}{vec1}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{*} \PY{n}{vec2}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                
+            \PY{k}{return} \PY{n}{prod}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{linear\PYZus{}regression}\PY{p}{(}\PY{n}{x\PYZus{}}\PY{p}{,} \PY{n}{y\PYZus{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{n}{iters}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{:}
+            \PY{c}{\PYZsh{} adding the the dummy column vector with all \PYZsq{}1\PYZsq{} which is for the intercept fit}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{xrange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{x\PYZus{}}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{n}{x\PYZus{}}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mf}{1.0}\PY{p}{)}
+            
+            \PY{c}{\PYZsh{} define the data size: M \PYZhy{}\PYZhy{} sample size, N \PYZhy{}\PYZhy{} feature size}
+            \PY{n}{M} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{x\PYZus{}}\PY{p}{)}
+            \PY{n}{N} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{x\PYZus{}}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+            
+            \PY{c}{\PYZsh{} initialize OLS coefs as \PYZsq{}0\PYZsq{}}
+            \PY{n}{beta} \PY{o}{=} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{]} \PY{o}{*} \PY{n}{N}
+            
+            \PY{k}{def} \PY{n+nf}{gradient\PYZus{}updates}\PY{p}{(}\PY{n}{beta\PYZus{}}\PY{p}{)}\PY{p}{:}
+        
+                \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{xrange}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{:}
+        
+                    \PY{n}{sum\PYZus{}gradient} \PY{o}{=} \PY{l+m+mf}{0.0}
+        
+                    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{xrange}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{sum\PYZus{}gradient} \PY{o}{+}\PY{o}{=} \PY{p}{(}\PY{n}{dot\PYZus{}product}\PY{p}{(}\PY{n}{beta\PYZus{}}\PY{p}{,} \PY{n}{x\PYZus{}}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{y\PYZus{}}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{o}{*} \PY{n}{x\PYZus{}}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]} 
+                    \PY{n}{beta\PYZus{}}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{beta\PYZus{}}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{alpha} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{M}\PY{p}{)} \PY{o}{*} \PY{n}{sum\PYZus{}gradient}
+        
+                \PY{k}{return} \PY{n}{beta\PYZus{}}
+            
+            \PY{k}{for} \PY{n}{it} \PY{o+ow}{in} \PY{n+nb}{xrange}\PY{p}{(}\PY{n}{iters}\PY{p}{)}\PY{p}{:}
+                \PY{n}{beta} \PY{o}{=} \PY{n}{gradient\PYZus{}updates}\PY{p}{(}\PY{n}{beta}\PY{p}{[}\PY{p}{:}\PY{p}{]}\PY{p}{)}
+                
+                \PY{k}{if} \PY{n}{it}\PY{o}{\PYZpc{}}\PY{k}{500}==0:
+                    \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Iteration = \PYZob{}\PYZcb{}:}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{it}\PY{p}{)}\PY{p}{,} \PY{n}{beta}
+            
+            \PY{k}{return} \PY{n}{beta}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{lr\PYZus{}predict}\PY{p}{(}\PY{n}{coef}\PY{p}{,} \PY{n}{vector}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n+nb}{type}\PY{p}{(}\PY{n}{vector}\PY{p}{)} \PY{o}{==} \PY{n+nb}{float} \PY{o+ow}{or} \PY{n+nb}{type}\PY{p}{(}\PY{n}{vector}\PY{p}{)} \PY{o}{==} \PY{n+nb}{int}\PY{p}{:}
+                \PY{n}{vector} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{p}{[}\PY{n}{vector}\PY{p}{]}\PY{p}{)}
+            
+            \PY{n}{vector}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+m+mf}{1.0}\PY{p}{)}
+            
+            \PY{k}{return} \PY{n}{dot\PYZus{}product}\PY{p}{(}\PY{n}{coef}\PY{p}{,} \PY{n}{vector}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c}{\PYZsh{} main}
+        \PY{n}{x} \PY{o}{=} \PY{n}{loadCSV}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{/Users/syan/Desktop/Document/ex2Data/ex2x.dat}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{y} \PY{o}{=} \PY{n}{loadCSV}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{/Users/syan/Desktop/Document/ex2Data/ex2y.dat}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c}{\PYZsh{} learning rate}
+        \PY{n}{learning\PYZus{}rate} \PY{o}{=} \PY{l+m+mf}{0.04}
+        
+        \PY{c}{\PYZsh{} total iteration round}
+        \PY{n}{rounds} \PY{o}{=} \PY{l+m+mi}{5000}
+        
+        \PY{n}{lr\PYZus{}coef} \PY{o}{=} \PY{n}{linear\PYZus{}regression}\PY{p}{(}\PY{n}{copy}\PY{o}{.}\PY{n}{deepcopy}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{,} \PY{n}{copy}\PY{o}{.}\PY{n}{deepcopy}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{n}{learning\PYZus{}rate}\PY{p}{,} \PY{n}{iters}\PY{o}{=}\PY{n}{rounds}\PY{p}{)}
+        
+        \PY{k}{print}
+        \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Linear Regression model fitted coefs:}\PY{l+s}{\PYZsq{}}
+        \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{slope =}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{lr\PYZus{}coef}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+        \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{intercept =}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{lr\PYZus{}coef}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Iteration = 0: [0.21715524143303216, -0.00017973622770281087]
+Iteration = 500: [0.07955983965889724, 0.6639983388835929]
+Iteration = 1000: [0.06568223329564456, 0.7402645356814631]
+Iteration = 1500: [0.06408806113250035, 0.7490255168436025]
+Iteration = 2000: [0.06390493265780359, 0.7500319232745775]
+Iteration = 2500: [0.0638838960100561, 0.7501475329175579]
+Iteration = 3000: [0.06388147945223141, 0.7501608134264444]
+Iteration = 3500: [0.06388120185326285, 0.7501623390078027]
+Iteration = 4000: [0.06388116996443878, 0.750162514256997]
+Iteration = 4500: [0.06388116630125099, 0.7501625343885235]
+
+Linear Regression model fitted coefs:
+slope = [0.0638811658806839]
+intercept = 0.7501625367
+    \end{Verbatim}
+
+    \subsection{1.2 Sanity Check -- SKlearn
+LinearRegression}\label{sanity-check-sklearn-linearregression}
+
+The slope and intecept of the OLS implementation match those of SKlearn
+Linear Regression.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{from} \PY{n+nn}{sklearn.linear\PYZus{}model} \PY{k+kn}{import} \PY{n}{LinearRegression}
+        
+        \PY{n}{x\PYZus{}pd} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{x}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        \PY{n}{y\PYZus{}pd} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{label}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+        
+        \PY{n}{lr} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
+        \PY{n}{lr}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{x\PYZus{}pd} \PY{p}{,} \PY{n}{y\PYZus{}pd}\PY{p}{)}
+        
+        \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{SKlearn Linear Regression model fitted coefs:}\PY{l+s}{\PYZsq{}}
+        \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{slope =}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{lr}\PY{o}{.}\PY{n}{coef\PYZus{}}
+        \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{intercept =}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{lr}\PY{o}{.}\PY{n}{intercept\PYZus{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+SKlearn Linear Regression model fitted coefs:
+slope = [[ 0.06388117]]
+intercept = [ 0.75016254]
+    \end{Verbatim}
+
+    \subsection{1.3 Visualize the fitting
+results}\label{visualize-the-fitting-results}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}pd}\PY{p}{,} \PY{n}{y\PYZus{}pd}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{blue}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{30}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{n}{x\PYZus{}pd}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{x}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{x\PYZus{}pd}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{x}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{,} 
+                 \PY{p}{[}\PY{n}{y\PYZus{}pd}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{label}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{y\PYZus{}pd}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{label}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{green}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Min to Max}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{n}{x\PYZus{}pd}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{x}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{x\PYZus{}pd}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{x}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{,} 
+                 \PY{p}{[}\PY{n}{lr\PYZus{}predict}\PY{p}{(}\PY{n}{lr\PYZus{}coef}\PY{p}{,} \PY{n}{x\PYZus{}pd}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{x}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{,} \PY{n}{lr\PYZus{}predict}\PY{p}{(}\PY{n}{lr\PYZus{}coef}\PY{p}{,} \PY{n}{x\PYZus{}pd}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{x}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{]}\PY{p}{,} 
+                 \PY{l+s}{\PYZsq{}}\PY{l+s}{k\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{red}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Fitted}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Fitted Regression Line}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{y}\PY{o}{=}\PY{l+m+mf}{1.02}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Feature X}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Label Y}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{fontsize}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{,} \PY{n}{loc}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{best}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Take Home Exercises_files/Take Home Exercises_12_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \section{Problem 2: Gaussian Naive Baysian
+Classifier}\label{problem-2-gaussian-naive-baysian-classifier}
+
+    Write a Python class that implements Naive Bayes Classification using a
+simple gaussian likelihood function. It should conform to the
+specification provided below. In addition to implementing the class, you
+should demonstrate this functionality in a Python shell (attach the
+output) or IPython notebook - a good test dataset for classification is
+the Pima Indian Diabetes dataset (accessible for free at multiple
+sites):
+
+\begin{verbatim}
+a. A new classifier can be instantiated with the function call NaiveBayes(some_data_file.csv), where some_data_file.csv is formatted as feature_1, feature_2, ... , feature_N, category and contains the initial set of observations to classify on. You can assume the features are all floating point numbers and the categories are integers.
+
+b. it has a method called predict which takes an array of length N (where N is the number of features) and returns the most likely output category.
+
+c. it has a method called observe which takes two parameters; an array of length N and an integer category. This method should add this data to the classifier and revise its future predictions.
+\end{verbatim}
+
+    \subsection{2.1 Solution to Problem 2}\label{solution-to-problem-2}
+
+Supposed we have the data with N samples, and the class labels Y having
+k classes \{class 0, class 1,\ldots{}, class k\}. Each sample data
+belongs to one of the classes. The data can be described by the feature
+matrix X:
+
+\textbf{X = \{X\_1, X\_2, X\_3, \ldots{}., X\_k\}}
+
+where x\_i is the column vectors, k is the total number of the features.
+
+Bayers' theorem can be expressed as following:
+
+\textbf{P(Y\textbar{}X) = P(X\textbar{}Y) * P(Y) / P(X)}
+
+where P(Y\textbar{}X) is the posterior, P(X\textbar{}Y) is called the
+event model that is Gaussian Distribution in our case, and P(Y) = prior
+probability of the classes. P(X) does not depend on class Y, and thus is
+constatnt.
+
+Naive Bayer Assumption means the conditional independence:
+
+\textbf{P(X\textbar{}Y) = P(X\_1, X\_2, X\_3,\ldots{}, X\_k\textbar{}y)
+= P(X\_1\textbar{}Y) * P(X\_2\textbar{}Y) * \ldots{}.. *
+P(X\_k\textbar{}Y)}
+
+We are going to solve the optimization problem below:
+
+\textbf{Y\_estimate = argmax P(Y) * P(parameters, X\_1\textbar{}Y) *
+P(parameters, X\_2\textbar{}Y) * \ldots{}.. * P(parameters,
+X\_k\textbar{}Y)}
+
+where the parameters are the mean and variances of the Gaussian
+Distributions for all features X.
+
+The optimal paramters are the sample means and variances of the each
+features with respect to \textbf{Maximum Likelihood Estimation}. Please
+refer to wikepedia for more information:
+
+https://en.wikipedia.org/wiki/Naive\_Bayes\_classifier
+
+    \subsubsection{2.1.1 Remark 1 --- function
+``observe''}\label{remark-1-function-observe}
+
+It can be considered as an online learning function: once the new data
+appear in production, we are going to re-train the Naive Bayes model to
+learn the latest information. In fact, there are two alternatives to do
+this:
+
+\textbf{Method 1:} Append the new data to the old ones and trigger the
+training procedure
+
+\textbf{Method 2:} Update the means and variances of each features
+belonging to each category
+
+Method 2 updates the new mean and variance of each class in the
+following way:
+
+\textbf{total\_mu = (N\_new * new\_mu + N\_old * old\_mu) / (N\_new +
+N\_old)}
+
+\textbf{total\_ssd = old\_ssd + new\_ssd + N\_old / (N\_new * N\_total)
+* (N\_new * mu - N\_new * new\_mu)\^{}2}
+
+\textbf{total\_sigma\^{}2 = total\_ssd / N\_total}
+
+where mu --- sample mean, sigma\^{}2 --- sample variance, ssd --- sample
+size N * sigma\^{}2 and N\_total = N\_new + N\_old.
+
+The problem set says that the method `observe' is supposed to take two
+parameters: one data array and its class label. Only Method 2 is able to
+satisfiy this requirement while Method 1 has one load the previous data.
+Also from the computaional cost's point, Method 2 doesn't re-compute the
+statistical values of the old data, and thus is superior to Mehtod 1.
+
+    \subsubsection{2.1.2 Remark 2 --- Pima Indians Diabetes
+Data}\label{remark-2-pima-indians-diabetes-data}
+
+The data are downloaded from UCI Machine Learning Repository:
+
+https://archive.ics.uci.edu/ml/datasets/Pima+Indians+Diabetes
+
+The webpage describes the data attributes as following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Number of times pregnant
+\item
+  Plasma glucose concentration a 2 hours in an oral glucose tolerance
+  test
+\item
+  Diastolic blood pressure (mm Hg)
+\item
+  Triceps skin fold thickness (mm)
+\item
+  2-Hour serum insulin (mu U/ml)
+\item
+  Body mass index (weight in kg/(height in m)\^{}2)
+\item
+  Diabetes pedigree function
+\item
+  Age (years)
+\item
+  Class variable (0 or 1)
+\end{enumerate}
+
+There are known data quality issues, such as the blood pressure = 0. Due
+to time constraint, I use the orginal data for model training and
+testing. To assign the column means to those zero values can be a quck
+fix.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{import} \PY{n+nn}{math}
+        \PY{k+kn}{import} \PY{n+nn}{random}
+        \PY{k+kn}{import} \PY{n+nn}{copy}
+        
+        \PY{n}{Debug}\PY{o}{=}\PY{n+nb+bp}{False}
+        
+        \PY{k}{class} \PY{n+nc}{NaiveBayes}\PY{p}{:}
+            
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{filename}\PY{p}{)}\PY{p}{:}  
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{filename} \PY{o}{=} \PY{n}{filename}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}model} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{prior} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+            
+            
+            \PY{k}{def} \PY{n+nf}{mean}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{vector}\PY{p}{)}\PY{p}{:}
+                \PY{k}{return} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{vector}\PY{p}{)}\PY{o}{/}\PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{vector}\PY{p}{)}\PY{p}{)}
+            
+            
+            \PY{k}{def} \PY{n+nf}{stdev}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{vector}\PY{p}{)}\PY{p}{:}
+                \PY{n}{average} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{vector}\PY{p}{)}
+                \PY{n}{variance} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{p}{[}\PY{n+nb}{pow}\PY{p}{(}\PY{n}{x}\PY{o}{\PYZhy{}}\PY{n}{average}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{vector}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{vector}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+                
+                \PY{k}{return} \PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{variance}\PY{p}{)}   
+            
+                
+            \PY{k}{def} \PY{n+nf}{gaussianDistribution}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{mean}\PY{p}{,} \PY{n}{stdev}\PY{p}{)}\PY{p}{:}      
+                \PY{n}{exponent} \PY{o}{=} \PY{n}{math}\PY{o}{.}\PY{n}{exp}\PY{p}{(} \PY{o}{\PYZhy{}}\PY{p}{(}\PY{n}{math}\PY{o}{.}\PY{n}{pow}\PY{p}{(}\PY{n}{x}\PY{o}{\PYZhy{}}\PY{n}{mean}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{math}\PY{o}{.}\PY{n}{pow}\PY{p}{(}\PY{n}{stdev}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{p}{)}
+                \PY{k}{return} \PY{p}{(}\PY{l+m+mf}{1.0} \PY{o}{/} \PY{p}{(}\PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{math}\PY{o}{.}\PY{n}{pi}\PY{p}{)} \PY{o}{*} \PY{n}{stdev}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{n}{exponent} 
+            
+            
+            \PY{k}{def} \PY{n+nf}{loadCSV}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n}{dataset} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+                
+                \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{filename}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{rb}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{csvfile}\PY{p}{:}
+                    \PY{n}{reader} \PY{o}{=} \PY{n}{csv}\PY{o}{.}\PY{n}{reader}\PY{p}{(}\PY{n}{csvfile}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{,}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{quotechar}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{|}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+                    \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{reader}\PY{p}{:}    
+                        \PY{n}{dataset}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{n+nb}{float}\PY{p}{,} \PY{n}{row}\PY{p}{)}\PY{p}{)}
+                        
+                \PY{k}{return} \PY{n}{dataset}
+                        
+            
+            \PY{k}{def} \PY{n+nf}{trainTestSplit}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{dataset}\PY{p}{,} \PY{n}{sampleRate}\PY{o}{=}\PY{l+m+mf}{0.7}\PY{p}{)}\PY{p}{:}
+                \PY{k}{if} \PY{n}{sampleRate} \PY{o}{\PYZgt{}} \PY{l+m+mf}{1.0}\PY{p}{:}
+                    \PY{n}{sampleRate} \PY{o}{=} \PY{l+m+mf}{1.0}
+                
+                \PY{k}{try}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{dataset}\PY{p}{)} \PY{o}{*} \PY{n}{sampleRate}\PY{p}{)}
+                \PY{k}{except}\PY{p}{:}
+                    \PY{k}{raise} \PY{n+ne}{TypeError}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{The input data should be in the format of a list of list!}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+                    
+                \PY{n}{trainSet} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+                \PY{n}{testSet} \PY{o}{=} \PY{n}{copy}\PY{o}{.}\PY{n}{deepcopy}\PY{p}{(}\PY{n}{dataset}\PY{p}{)}
+                
+                \PY{k}{while} \PY{n+nb}{len}\PY{p}{(}\PY{n}{trainSet}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize}\PY{p}{:}
+                    \PY{n}{index} \PY{o}{=} \PY{n}{random}\PY{o}{.}\PY{n}{randrange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{testSet}\PY{p}{)}\PY{p}{)}
+                    \PY{n}{trainSet}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{testSet}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{n}{index}\PY{p}{)}\PY{p}{)}
+                
+                \PY{k}{return} \PY{p}{[}\PY{n}{trainSet}\PY{p}{,} \PY{n}{testSet}\PY{p}{]}
+            
+            
+            \PY{k}{def} \PY{n+nf}{priorProbability}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{inputData}\PY{p}{)}\PY{p}{:}   
+                \PY{n}{N} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{inputData}\PY{p}{)}
+                \PY{n}{categoryCount} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+                  
+                \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{vector} \PY{o}{=} \PY{n}{inputData}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                    
+                    \PY{k}{if} \PY{p}{(}\PY{n}{vector}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{categoryCount}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{categoryCount}\PY{p}{[}\PY{n}{vector}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]} \PY{o}{=} \PY{l+m+mf}{0.0}
+                    \PY{k}{else}\PY{p}{:}
+                        \PY{n}{categoryCount}\PY{p}{[}\PY{n}{vector}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{l+m+mf}{1.0}
+                
+                \PY{c}{\PYZsh{} calcualate the prior probability for each category label}
+                \PY{k}{for} \PY{n}{key} \PY{o+ow}{in} \PY{n}{categoryCount}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{prior}\PY{p}{[}\PY{n}{key}\PY{p}{]} \PY{o}{=} \PY{n}{categoryCount}\PY{p}{[}\PY{n}{key}\PY{p}{]} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+            
+            
+            \PY{k}{def} \PY{n+nf}{allocateCategory}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{ipnutData}\PY{p}{)}\PY{p}{:}  
+                \PY{n}{N} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{ipnutData}\PY{p}{)}
+                \PY{n}{categoryBag} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+                
+                \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{vector} \PY{o}{=} \PY{n}{ipnutData}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                    
+                    \PY{k}{if} \PY{p}{(}\PY{n}{vector}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{categoryBag}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{categoryBag}\PY{p}{[}\PY{n}{vector}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+                    \PY{n}{categoryBag}\PY{p}{[}\PY{n}{vector}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{vector}\PY{p}{)}
+                
+                \PY{k}{return} \PY{n}{categoryBag}
+            
+            
+            \PY{k}{def} \PY{n+nf}{fit}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{ipnutData}\PY{p}{)}\PY{p}{:}     
+                \PY{n}{category\PYZus{}stats} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{allocateCategory}\PY{p}{(}\PY{n}{ipnutData}\PY{p}{)}
+                \PY{c}{\PYZsh{} Prior calculation}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{priorProbability}\PY{p}{(}\PY{n}{ipnutData}\PY{p}{)}
+                
+                \PY{k}{for} \PY{n}{categoryLabel}\PY{p}{,} \PY{n}{categoryData} \PY{o+ow}{in} \PY{n}{category\PYZus{}stats}\PY{o}{.}\PY{n}{iteritems}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{feature\PYZus{}stats} \PY{o}{=} \PY{p}{[}\PY{n+nb}{list}\PY{p}{(}\PY{p}{[}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{feature}\PY{p}{)}\PY{p}{,} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{stdev}\PY{p}{(}\PY{n}{feature}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+                                     \PY{k}{for} \PY{n}{feature} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{categoryData}\PY{p}{)}\PY{p}{]}
+                    \PY{k}{del} \PY{n}{feature\PYZus{}stats}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+                    
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}model}\PY{p}{[}\PY{n}{categoryLabel}\PY{p}{]} \PY{o}{=} \PY{n}{feature\PYZus{}stats}
+        
+                
+            \PY{k}{def} \PY{n+nf}{calculateCategoryProbabilities}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{Vector}\PY{p}{)}\PY{p}{:} 
+                \PY{n}{probabilities} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+                
+                \PY{k}{for} \PY{n}{categoryLabel}\PY{p}{,} \PY{n}{categoryValue} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}model}\PY{o}{.}\PY{n}{iteritems}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                    \PY{k}{assert} \PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{Vector}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)} \PY{o}{==} \PY{n+nb}{len}\PY{p}{(}\PY{n}{categoryValue}\PY{p}{)}\PY{p}{,} \PYZbs{}
+                    \PY{l+s}{\PYZsq{}}\PY{l+s}{The shape of input array \PYZob{}\PYZcb{} does not match the training data \PYZob{}\PYZcb{}.}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PYZbs{}
+                    \PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{Vector}\PY{p}{)}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{categoryValue}\PY{p}{)}\PY{p}{)}
+                    
+                    \PY{c}{\PYZsh{} initial values with the prior probability}
+                    \PY{n}{probabilities}\PY{p}{[}\PY{n}{categoryLabel}\PY{p}{]} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{prior}\PY{p}{[}\PY{n}{categoryLabel}\PY{p}{]}
+                    
+                    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{categoryValue}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{mean}\PY{p}{,} \PY{n}{stdev} \PY{o}{=} \PY{n}{categoryValue}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                        \PY{n}{x} \PY{o}{=} \PY{n}{Vector}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                        \PY{n}{probabilities}\PY{p}{[}\PY{n}{categoryLabel}\PY{p}{]} \PY{o}{*}\PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{gaussianDistribution}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{mean}\PY{p}{,} \PY{n}{stdev}\PY{p}{)}
+                        
+                \PY{k}{return} \PY{n}{probabilities}
+            
+            
+            \PY{k}{def} \PY{n+nf}{predict}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{Vector}\PY{p}{)}\PY{p}{:}
+                \PY{c}{\PYZsh{} predict the class label by selecting the class with highest probability}
+                \PY{n}{probabilities} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{calculateCategoryProbabilities}\PY{p}{(}\PY{n}{Vector}\PY{p}{)}
+                \PY{n}{bestLabel}\PY{p}{,} \PY{n}{bestProb} \PY{o}{=} \PY{n+nb+bp}{None}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+                
+                \PY{n}{totalProb} \PY{o}{=} \PY{l+m+mf}{0.0} \PY{c}{\PYZsh{} for normalization}
+                \PY{k}{for} \PY{n}{categoryValue}\PY{p}{,} \PY{n}{probability} \PY{o+ow}{in} \PY{n}{probabilities}\PY{o}{.}\PY{n}{iteritems}\PY{p}{(}\PY{p}{)}\PY{p}{:}            
+                    \PY{n}{totalProb} \PY{o}{+}\PY{o}{=} \PY{n}{probability}
+                    \PY{k}{if} \PY{n}{bestLabel} \PY{o+ow}{is} \PY{n+nb+bp}{None} \PY{o+ow}{or} \PY{n}{probability} \PY{o}{\PYZgt{}} \PY{n}{bestProb}\PY{p}{:}
+                        \PY{n}{bestProb} \PY{o}{=} \PY{n}{probability}
+                        \PY{n}{bestLabel} \PY{o}{=} \PY{n}{categoryValue}
+                
+                \PY{k}{return} \PY{n}{bestLabel}
+        
+            
+            \PY{k}{def} \PY{n+nf}{getPredictions}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{testSet}\PY{p}{)}\PY{p}{:}   
+                \PY{n}{predictions} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+                \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{testSet}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{result} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{testSet}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+                    \PY{n}{predictions}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{result}\PY{p}{)}
+                
+                \PY{k}{return} \PY{n}{predictions}
+            
+            
+            \PY{k}{def} \PY{n+nf}{getAccuracy}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{testSet}\PY{p}{,} \PY{n}{predictions}\PY{p}{)}\PY{p}{:}
+                \PY{n}{correct} \PY{o}{=} \PY{l+m+mi}{0}
+                \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{testSet}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                    \PY{k}{if} \PY{n}{testSet}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{predictions}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{:}
+                        \PY{n}{correct} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                \PY{k}{return} \PY{p}{(}\PY{n}{correct}\PY{o}{/}\PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{testSet}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{100.0}
+            
+            
+            \PY{c}{\PYZsh{} online learning method 1}
+            \PY{k}{def} \PY{n+nf}{observe\PYZus{}sanityCheck}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{inputVector}\PY{p}{,} \PY{n}{label}\PY{p}{,} \PY{n}{trainSet}\PY{p}{)}\PY{p}{:}
+                \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{inputVector}\PY{p}{)} \PY{o}{==} \PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{trainSet}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{Check your input feature size!}\PY{l+s}{\PYZsq{}}
+                \PY{k}{assert} \PY{n+nb}{type}\PY{p}{(}\PY{n}{label}\PY{p}{)} \PY{o}{==} \PY{n+nb}{int}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{The label has to be an interger.}\PY{l+s}{\PYZsq{}}
+                
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+                
+                \PY{c}{\PYZsh{} append new data to the original dataset}
+                \PY{n}{inputVector}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{label}\PY{p}{)}
+                \PY{n}{trainSet}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{inputVector}\PY{p}{)}
+                
+                \PY{c}{\PYZsh{} training model}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{trainSet}\PY{p}{)}
+            
+            
+            \PY{c}{\PYZsh{} online learning method 2}
+            \PY{k}{def} \PY{n+nf}{observe}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{inputVector}\PY{p}{,} \PY{n}{label}\PY{p}{)}\PY{p}{:}
+                \PY{k}{assert} \PY{n+nb}{type}\PY{p}{(}\PY{n}{label}\PY{p}{)} \PY{o}{==} \PY{n+nb}{int}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{The label has to be an integer.}\PY{l+s}{\PYZsq{}}
+                
+                \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{inputVector}\PY{p}{)} \PY{o}{!=} \PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize} \PY{o}{!=} \PY{l+m+mi}{0}\PY{p}{:} 
+                    
+                    \PY{k}{for} \PY{n}{categoryLabel}\PY{p}{,} \PY{n}{categoryValue} \PY{o+ow}{in} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}model}\PY{o}{.}\PY{n}{iteritems}\PY{p}{(}\PY{p}{)}\PY{p}{:}        
+                        \PY{k}{assert} \PY{n+nb}{len}\PY{p}{(}\PY{n}{inputVector}\PY{p}{)} \PY{o}{==} \PY{n+nb}{len}\PY{p}{(}\PY{n}{categoryValue}\PY{p}{)}\PY{p}{,} \PYZbs{}
+                        \PY{l+s}{\PYZsq{}}\PY{l+s}{The shape of input array \PYZob{}\PYZcb{} does not match the training data \PYZob{}\PYZcb{}.}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PYZbs{}
+                        \PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{inputVector}\PY{p}{)}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{categoryValue}\PY{p}{)}\PY{p}{)}
+                        
+                        \PY{n}{n\PYZus{}old} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{prior}\PY{p}{[}\PY{n}{categoryLabel}\PY{p}{]} \PY{o}{*} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize}
+                        
+        
+                        \PY{k}{if} \PY{n}{label} \PY{o}{==} \PY{n}{categoryLabel}\PY{p}{:}
+                            \PY{c}{\PYZsh{} update prior and feature mean in each cateogry}
+                            \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{prior}\PY{p}{[}\PY{n}{categoryLabel}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{n\PYZus{}old} \PY{o}{+} \PY{l+m+mf}{1.0}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize} \PY{o}{+} \PY{l+m+mf}{1.0}\PY{p}{)}
+                                                                                      
+                            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{categoryValue}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                                \PY{n}{mu}\PY{p}{,} \PY{n}{stdev} \PY{o}{=} \PY{n}{categoryValue}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                                \PY{n}{var} \PY{o}{=} \PY{n}{math}\PY{o}{.}\PY{n}{pow}\PY{p}{(}\PY{n}{stdev}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+        
+                                \PY{n}{n\PYZus{}new} \PY{o}{=} \PY{l+m+mi}{1}
+                                \PY{n}{new\PYZus{}var} \PY{o}{=} \PY{l+m+mf}{0.0}
+                                \PY{n}{new\PYZus{}mu} \PY{o}{=} \PY{n}{inputVector}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+        
+                                \PY{n}{n\PYZus{}total} \PY{o}{=} \PY{n+nb}{float}\PY{p}{(}\PY{n}{n\PYZus{}old} \PY{o}{+} \PY{n}{n\PYZus{}new}\PY{p}{)}
+        
+                                \PY{c}{\PYZsh{} combine new vector and old data}
+                                \PY{c}{\PYZsh{} update the mean}
+                                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}model}\PY{p}{[}\PY{n}{categoryLabel}\PY{p}{]}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{n\PYZus{}new} \PY{o}{*} \PY{n}{new\PYZus{}mu} \PY{o}{+} \PY{n}{n\PYZus{}old} \PY{o}{*} \PY{n}{mu}\PY{p}{)} \PY{o}{/} \PY{n}{n\PYZus{}total}
+                               
+                                \PY{c}{\PYZsh{} update ssd (\PYZdq{}sum\PYZhy{}of\PYZhy{}squared\PYZhy{}differences\PYZdq{})}
+                                \PY{n}{old\PYZus{}ssd} \PY{o}{=} \PY{n}{n\PYZus{}old} \PY{o}{*} \PY{n}{var}
+                                \PY{n}{new\PYZus{}ssd} \PY{o}{=} \PY{n}{n\PYZus{}new} \PY{o}{*} \PY{n}{new\PYZus{}var}
+                                \PY{n}{total\PYZus{}ssd} \PY{o}{=} \PY{p}{(}\PY{n}{old\PYZus{}ssd} \PY{o}{+} \PY{n}{new\PYZus{}ssd} \PY{o}{+}
+                                             \PY{p}{(}\PY{n}{n\PYZus{}old} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{n\PYZus{}new} \PY{o}{*} \PY{n}{n\PYZus{}total}\PY{p}{)}\PY{p}{)} \PY{o}{*}
+                                             \PY{p}{(}\PY{n}{n\PYZus{}new} \PY{o}{*} \PY{n}{mu} \PY{o}{\PYZhy{}} \PY{n}{n\PYZus{}new} \PY{o}{*} \PY{n}{new\PYZus{}mu}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{2}\PY{p}{)}
+        
+                                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{\PYZus{}model}\PY{p}{[}\PY{n}{categoryLabel}\PY{p}{]}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{total\PYZus{}ssd} \PY{o}{/} \PY{n}{n\PYZus{}total}\PY{p}{)}
+                                
+                        \PY{k}{else}\PY{p}{:}
+                            \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{prior}\PY{p}{[}\PY{n}{categoryLabel}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{n\PYZus{}old}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize} \PY{o}{+} \PY{l+m+mf}{1.0}\PY{p}{)}
+                
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1} 
+                
+                
+            \PY{k}{def} \PY{n+nf}{validation}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{testSet}\PY{p}{)}\PY{p}{:}
+                \PY{c}{\PYZsh{} validate model}
+                \PY{n}{pred\PYZus{}} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{getPredictions}\PY{p}{(}\PY{n}{testSet}\PY{p}{)}
+                \PY{n}{accuracy\PYZus{}} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{getAccuracy}\PY{p}{(}\PY{n}{testSet}\PY{p}{,} \PY{n}{pred\PYZus{}}\PY{p}{)}
+        
+                \PY{k}{if} \PY{n}{Debug}\PY{p}{:}
+                    \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{train=\PYZob{}0\PYZcb{} and test=\PYZob{}1\PYZcb{} rows}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{testSet}\PY{p}{)}\PY{p}{)}
+                    \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Accuracy: \PYZob{}0\PYZcb{}}\PY{l+s}{\PYZpc{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{accuracy\PYZus{}}\PY{p}{)}
+                    \PY{k}{print} \PY{p}{[}\PY{p}{(}\PY{n+nb}{sum}\PY{p}{(}\PY{n}{attribute}\PY{p}{)}\PY{p}{,} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{attribute}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{attribute} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{pred\PYZus{}}\PY{p}{)}\PY{p}{]}
+        
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{trainSize}\PY{p}{,} \PY{n}{accuracy\PYZus{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{def} \PY{n+nf}{main}\PY{p}{(}\PY{n}{filename}\PY{p}{,} \PY{n}{splitRatio}\PY{p}{)}\PY{p}{:}
+         
+             \PY{n}{nb} \PY{o}{=} \PY{n}{NaiveBayes}\PY{p}{(}\PY{n}{filename}\PY{p}{)}
+             \PY{n}{data\PYZus{}} \PY{o}{=} \PY{n}{nb}\PY{o}{.}\PY{n}{loadCSV}\PY{p}{(}\PY{p}{)}
+             \PY{n}{training\PYZus{}}\PY{p}{,} \PY{n}{test\PYZus{}} \PY{o}{=} \PY{n}{nb}\PY{o}{.}\PY{n}{trainTestSplit}\PY{p}{(}\PY{n}{data\PYZus{}}\PY{p}{,} \PY{n}{splitRatio}\PY{p}{)}
+             
+             \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Split \PYZob{}0\PYZcb{} rows into train=\PYZob{}1\PYZcb{} and test=\PYZob{}2\PYZcb{} rows}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{data\PYZus{}}\PY{p}{)}\PY{p}{,}                                                               \PY{n+nb}{len}\PY{p}{(}\PY{n}{training\PYZus{}}\PY{p}{)}\PY{p}{,} 
+                                                                             \PY{n+nb}{len}\PY{p}{(}\PY{n}{test\PYZus{}}\PY{p}{)}\PY{p}{)}
+             
+             \PY{c}{\PYZsh{} prepare model}
+             \PY{n}{nb}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}}\PY{p}{)}
+             
+             \PY{c}{\PYZsh{} test model}
+             \PY{n}{predictions} \PY{o}{=} \PY{n}{nb}\PY{o}{.}\PY{n}{getPredictions}\PY{p}{(}\PY{n}{test\PYZus{}}\PY{p}{)}
+             \PY{n}{accuracy} \PY{o}{=} \PY{n}{nb}\PY{o}{.}\PY{n}{getAccuracy}\PY{p}{(}\PY{n}{test\PYZus{}}\PY{p}{,} \PY{n}{predictions}\PY{p}{)}
+             \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Naive Bayers Accuracy: \PYZob{}0\PYZcb{}}\PY{l+s}{\PYZpc{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{accuracy}\PY{p}{)}
+             
+             \PY{k}{return} \PY{n}{nb}\PY{p}{,} \PY{n}{training\PYZus{}}\PY{p}{,} \PY{n}{test\PYZus{}}
+\end{Verbatim}
+
+    \subsection{2.2 Sanity Check -- Gaussian Naive Bayes in
+SKlearn}\label{sanity-check-gaussian-naive-bayes-in-sklearn}
+
+The accuracies from our implementation and SKlearn GaussianNB are equal.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{fname} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{/Users/syan/Desktop/Document/pima\PYZhy{}diabetes/pima\PYZhy{}indians\PYZhy{}diabetes.data}\PY{l+s}{\PYZsq{}}
+         \PY{n}{split\PYZus{}ratio} \PY{o}{=} \PY{l+m+mf}{0.7}
+         
+         \PY{n}{nb\PYZus{}model}\PY{p}{,} \PY{n}{trainingData}\PY{p}{,} \PY{n}{testData} \PY{o}{=} \PY{n}{main}\PY{p}{(}\PY{n}{fname}\PY{p}{,} \PY{n}{split\PYZus{}ratio}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Split 768 rows into train=537 and test=231 rows
+Naive Bayers Accuracy: 76.1904761905\%
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.naive\PYZus{}bayes} \PY{k+kn}{import} \PY{n}{GaussianNB}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.metrics} \PY{k+kn}{import} \PY{n}{accuracy\PYZus{}score}
+         
+         \PY{n}{training\PYZus{}pd} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{trainingData}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{x1}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x2}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x3}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x4}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x5}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{x6}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x7}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x8}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{y}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{test\PYZus{}pd} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{testData}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{x1}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x2}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x3}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x4}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x5}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{x6}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x7}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{x8}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{y}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{model} \PY{o}{=} \PY{n}{GaussianNB}\PY{p}{(}\PY{p}{)}
+         \PY{n}{model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}pd}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{p}{:}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{,} \PY{n}{training\PYZus{}pd}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{pred\PYZus{}results} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{test\PYZus{}pd}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{p}{:}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{)}
+         \PY{n}{sklearn\PYZus{}accuracy} \PY{o}{=} \PY{n}{accuracy\PYZus{}score}\PY{p}{(}\PY{n}{test\PYZus{}pd}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{y}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{pred\PYZus{}results}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{SKLearn Gaussian NB Accuracy: \PYZob{}0\PYZcb{}}\PY{l+s}{\PYZpc{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{sklearn\PYZus{}accuracy}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+SKLearn Gaussian NB Accuracy: 0.761904761905\%
+    \end{Verbatim}
+
+    \subsubsection{2.2.1 Visualize the classification results as ROC
+curve}\label{visualize-the-classification-results-as-roc-curve}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.metrics} \PY{k+kn}{import} \PY{n}{roc\PYZus{}curve}\PY{p}{,} \PY{n}{auc}
+         
+         \PY{k}{def} \PY{n+nf}{plot\PYZus{}roc}\PY{p}{(}\PY{n}{truth}\PY{p}{,} \PY{n}{pred\PYZus{}prob}\PY{p}{,} \PY{n}{lib}\PY{p}{)}\PY{p}{:}
+         
+             \PY{n}{fpr}\PY{p}{,} \PY{n}{tpr}\PY{p}{,} \PY{n}{thresholds} \PY{o}{=} \PY{n}{roc\PYZus{}curve}\PY{p}{(}\PY{n}{truth}\PY{p}{,} \PY{n}{pred\PYZus{}prob}\PY{p}{)}
+             \PY{n}{roc\PYZus{}auc} \PY{o}{=} \PY{n}{auc}\PY{p}{(}\PY{n}{fpr}\PY{p}{,} \PY{n}{tpr}\PY{p}{)}
+         
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{fpr}\PY{p}{,} \PY{n}{tpr}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{AUC = }\PY{l+s+si}{\PYZpc{}0.2f}\PY{l+s}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{roc\PYZus{}auc}\PY{p}{)}\PY{p}{)}
+         
+             \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.05}\PY{p}{,} \PY{l+m+mf}{1.05}\PY{p}{]}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.05}\PY{p}{,} \PY{l+m+mf}{1.05}\PY{p}{]}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{False Positive Rate}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{True Positive Rate}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Receiver operating characteristic \PYZob{}\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{lib}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{o}{=}\PY{l+m+mf}{1.02}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{lower right}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{probas\PYZus{}} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict\PYZus{}proba}\PY{p}{(}\PY{n}{test\PYZus{}pd}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{p}{:}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plot\PYZus{}roc}\PY{p}{(}\PY{n}{test\PYZus{}pd}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{,} \PY{n}{probas\PYZus{}}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}  \PY{n}{lib}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZsq{}} \PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Take Home Exercises_files/Take Home Exercises_25_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{2.3 Simple tests of the online learning function
+``observe''}\label{simple-tests-of-the-online-learning-function-observe}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Randomly generate one input array and append it to the training data
+\item
+  Run ``observe'' function to update the Naive Bayers model
+\item
+  Use the updated model to make prediction on the original test data
+\item
+  Track the prediction accuracy as new data added
+\item
+  \textbf{Repeat Step 1 - 4}
+\item
+  Compare the results from Method 1 and Method 2
+\end{enumerate}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{accuracyList\PYZus{}v1} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+         \PY{n}{accuracyList\PYZus{}v2} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+         
+         \PY{c}{\PYZsh{} make a deep copy of Naive Bayers instance}
+         \PY{n}{tempModel} \PY{o}{=} \PY{n}{copy}\PY{o}{.}\PY{n}{deepcopy}\PY{p}{(}\PY{n}{nb\PYZus{}model}\PY{p}{)}
+         
+         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{xrange}\PY{p}{(}\PY{l+m+mi}{200}\PY{p}{)}\PY{p}{:}
+             \PY{c}{\PYZsh{} random sample data generator}
+             \PY{n}{newOb} \PY{o}{=} \PY{p}{[}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{)} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{xrange}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{]}
+             \PY{n}{label} \PY{o}{=} \PY{l+m+mi}{1} \PY{k}{if} \PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mf}{0.4} \PY{k}{else} \PY{l+m+mi}{0}
+             
+             \PY{k}{if} \PY{n}{Debug}\PY{p}{:}
+                 \PY{k}{print} \PY{n}{nb\PYZus{}model}\PY{o}{.}\PY{n}{\PYZus{}model}\PY{p}{,} \PY{n}{nb\PYZus{}model}\PY{o}{.}\PY{n}{prior}\PY{p}{,} \PY{n}{nb\PYZus{}model}\PY{o}{.}\PY{n}{trainSize}
+                 \PY{k}{print} \PY{n}{tempModel}\PY{o}{.}\PY{n}{\PYZus{}model}\PY{p}{,} \PY{n}{tempModel}\PY{o}{.}\PY{n}{prior}\PY{p}{,} \PY{n}{tempModel}\PY{o}{.}\PY{n}{trainSize}
+             
+             \PY{n}{nb\PYZus{}model}\PY{o}{.}\PY{n}{observe\PYZus{}sanityCheck}\PY{p}{(}\PY{n}{newOb}\PY{p}{[}\PY{p}{:}\PY{p}{]}\PY{p}{,} \PY{n}{label}\PY{p}{,} \PY{n}{trainingData}\PY{p}{)}
+             \PY{n}{accuracyList\PYZus{}v1}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{nb\PYZus{}model}\PY{o}{.}\PY{n}{validation}\PY{p}{(}\PY{n}{testData}\PY{p}{)}\PY{p}{)}
+             
+             \PY{n}{tempModel}\PY{o}{.}\PY{n}{observe}\PY{p}{(}\PY{n}{newOb}\PY{p}{[}\PY{p}{:}\PY{p}{]}\PY{p}{,} \PY{n}{label}\PY{p}{)}
+             \PY{n}{accuracyList\PYZus{}v2}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{tempModel}\PY{o}{.}\PY{n}{validation}\PY{p}{(}\PY{n}{testData}\PY{p}{)}\PY{p}{)}
+             
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+         \PY{n}{accuracyList\PYZus{}v1} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{accuracyList\PYZus{}v1}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Training Sample Size}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{Accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{accuracyList\PYZus{}v1}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Training Sample Size}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{accuracyList\PYZus{}v1}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Method 1}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{accuracyList\PYZus{}v2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{accuracyList\PYZus{}v2}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Training Sample Size}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{Accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{accuracyList\PYZus{}v2}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Training Sample Size}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{accuracyList\PYZus{}v2}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{Accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{Method 2}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Online Learning Accuracy}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{y}\PY{o}{=}\PY{l+m+mf}{1.02}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Training Sample Size}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Accuracy}\PY{l+s}{\PYZpc{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{best}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Take Home Exercises_files/Take Home Exercises_27_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{2.3.1 Sanity check of two ``observe''
+methods}\label{sanity-check-of-two-observe-methods}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{eq} \PY{o}{=} \PY{p}{(}\PY{n}{accuracyList\PYZus{}v1} \PY{o}{==} \PY{n}{accuracyList\PYZus{}v2}\PY{p}{)}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+         
+         \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{eq}\PY{p}{:}
+             \PY{k}{assert} \PY{n}{x}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{Two methods does not give the identical results!}\PY{l+s}{\PYZsq{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
